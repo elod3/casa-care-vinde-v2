@@ -22,8 +22,8 @@
   if (!el) return;
 
   var KEY = 'im-loader-seen';
-  var HOLD = 2000;   // ținerea peste momentul în care site-ul e gata
-  var MIN  = 900;    // sub atât ar fi un clipit, nu o intrare
+  var HOLD = 400;    // ținerea peste momentul în care site-ul e gata
+  var MIN  = 700;    // sub atât ar fi un clipit, nu o intrare
 
   var bar  = el.querySelector('.loader__bar i');
   var pct  = el.querySelector('.loader__pct');

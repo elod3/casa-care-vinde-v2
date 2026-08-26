@@ -53,12 +53,12 @@ table { border-collapse: collapse; width: 100%; }
   /* cerneala de pe fundal galben */
   --on-lit:    #17140A;
   --on-lit-2:  rgba(23, 20, 10, .74);
-  --on-lit-3:  rgba(23, 20, 10, .55);
+  --on-lit-3:  rgba(23, 20, 10, .70);   /* era .55 = 3,27:1 pe galben; acum 4,6:1 */
 
   /* text */
   --ink:       #F3EFE8;
   --ink-2:     #A8A199;
-  --ink-3:     #6F6960;
+  --ink-3:     #8B857C;   /* 5,44:1 pe --bg. Era #6F6960 = 3,66:1, sub AA. */
 
   /* suprafețe */
   --panel:     rgba(255, 255, 255, .035);
@@ -222,7 +222,11 @@ table { border-collapse: collapse; width: 100%; }
 .wrap--narrow { max-width: 900px; }
 .wrap--wide { max-width: 1500px; }
 
-.section { padding-block: var(--section-y); position: relative; overflow: hidden; }
+/* `clip` taie la fel ca `hidden`, dar NU face din secțiune un container de
+   scroll — și tocmai asta omora position:sticky la orice descendent (panoul
+   calculatorului era mort și pe desktop). `hidden` rămâne ca rezervă pentru
+   Safari sub 16, care ignoră rândul următor. */
+.section { padding-block: var(--section-y); position: relative; overflow: hidden; overflow: clip; }
 .section--tight { padding-block: clamp(3rem, 1.5rem + 5vw, 6rem); }
 /* Secțiunea aprinsă: galbenul de brand pe toată lățimea, cu cerneală închisă.
    Ia locul vechilor secțiuni navy. Bara de navigație se întoarce singură pe
@@ -855,7 +859,21 @@ textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
   background: linear-gradient(165deg, rgba(226, 176, 23, .07), transparent 55%), var(--panel);
   border-color: rgba(226, 176, 23, .28);
 }
-@media (max-width: 999px) { .calc__panel--out { position: static; } }
+@media (max-width: 999px) {
+  /* Rezultatul urcă deasupra comenzilor și rămâne lipit sub bară. Un slider
+     din care nu vezi ce iese nu e un instrument, e o presupunere. */
+  .calc { display: flex; flex-direction: column; }
+  .calc__panel--out {
+    order: -1;
+    position: sticky; top: calc(var(--nav-h) - 26px); z-index: 5;
+    padding: 1rem 1.1rem; gap: .8rem;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(165deg, rgba(226,176,23,.10), transparent 60%), rgba(10,9,8,.92);
+  }
+  .calc__panel--out .bigfig { padding-block: .2rem .5rem; }
+  .calc__panel--out .bigfig b { font-size: clamp(2.6rem, 1.6rem + 5vw, 4rem); }
+  .calc__panel--out .chain { display: none; }
+}
 
 .calc__head { display: grid; gap: .5rem; }
 .calc__head h3 { letter-spacing: -.03em; }
@@ -1342,20 +1360,26 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
     margin-inline: calc(var(--gutter) * -1);
     padding-inline: var(--gutter);
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    /* `proximity`, nu `mandatory`: mandatory prindea cei trei pixeli
+       orizontali dintr-un swipe ușor diagonal și trăgea banda la cardul
+       următor în timp ce pagina cobora. Ăla era clătinatul — nu gestul. */
+    scroll-snap-type: x proximity;
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    /* pan-x singur permite DOAR mișcarea orizontală: gestul vertical era
+       înghițit, deci pagina nu se derula cu degetul pe nicio bandă. */
+    touch-action: pan-x pan-y pinch-zoom;
+    /* Indiciul „mai e ceva dincolo", fără nicio mișcare: marginea din dreapta
+       se stinge. Ochiul citește o bandă tăiată, nu un card centrat. */
+    -webkit-mask-image: linear-gradient(90deg, #000 0 84%, transparent 100%);
+            mask-image: linear-gradient(90deg, #000 0 84%, transparent 100%);
   }
   .rail::-webkit-scrollbar { display: none; }
   .rail > * {
     flex: 0 0 min(76%, 300px);
     scroll-snap-align: start;
   }
-  /* Benzile care se mișcă singure n-au voie să aibă snap: snapul trage
-     înapoi la fiecare pixel împins de derivă și banda tremură pe loc. */
-  .rail[data-drift] { scroll-snap-type: none; }
-
   /* Pe telefon nu are rost întreg: la lățimea asta ar fi o dungă de 4 cm.
      Îl lăsăm să iasă mult peste margini și să se vadă mijlocul casei, mare. */
   .casa-bg picture { width: 250%; height: auto; }
@@ -1368,14 +1392,7 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
     padding-top: 1rem;
   }
   .figures.rail > * { flex: 0 0 min(58%, 210px); }
-  /* Distanțierul de la capăt e doar pentru benzile care NU derivă. Pe cele care
-     se mișcă singure ar strica bucla: punctul de reluare se calculează din
-     lățimea unui set întreg, iar un capăt în plus îl mută. */
-  .rail:not([data-drift])::after { content: ""; flex: 0 0 calc(var(--gutter) - .8rem); }
-
-  /* Gestul vertical nu are ce căuta aici: fără asta, un scroll în jos peste
-     bandă o clatină lateral câțiva pixeli. */
-  .rail { touch-action: pan-x; }
+  .rail::after { content: ""; flex: 0 0 calc(var(--gutter) - .8rem); }
 
   /* mockupurile sunt mai înguste: patru ecrane de telefon unul sub altul
      mâncau două ecrane și jumătate de derulat, degeaba */
@@ -1538,4 +1555,38 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   .format { grid-template-columns: minmax(0, 118px) minmax(0, 1fr); gap: 1.1rem; }
   .formats { gap: 1.8rem; }
   .format__body p { font-size: .84rem; }
+}
+
+/* ==========================================================================
+   32. TOUCH — ce se schimbă când nu există cursor
+   Pe touch, :hover se activează la atingere și rămâne până atingi altceva.
+   Derulai peste un card, el se ridica și rămânea ridicat: pagina se umplea
+   de elemente „apăsate" pe care nu le apăsase nimeni. Regula de aici încolo:
+   :hover = decor, :active = confirmare. Pe telefon există doar al doilea.
+   ========================================================================== */
+@media (hover: none) {
+  .btn:hover, .card:hover, .plan:hover, .slot:hover,
+  .phone:hover, .stat:hover, .proof__shot:hover, .brand--mark:hover { transform: none; }
+  .card:hover::before { opacity: 0; }
+  .card:hover, .stat:hover, .topic:hover, .plan:hover {
+    border-color: var(--line); background: var(--panel);
+  }
+  .slot:hover { background: rgba(0, 0, 0, .2); border-color: var(--line-2); }
+  .btn:hover .btn__a { transform: none; }
+  .link-arrow:hover { gap: .45rem; }
+
+  /* ...dar apăsarea trebuie să se simtă, altfel butonul pare mort */
+  .btn:active { transform: scale(.97); }
+  .card:active, .slot:active, .plan:active { transform: scale(.995); }
+}
+
+@media (max-width: 720px) {
+  /* Sub 16px, Safari pe iOS mărește pagina la focus și nu o mai dă înapoi.
+     16px nu e o preferință de design, e pragul de la care nu sare ecranul. */
+  input[type="text"], input[type="email"], input[type="number"],
+  select, textarea { font-size: 16px; }
+
+  /* ținta minimă pe touch e 44px; desenul rămâne același, doar zona crește */
+  input[type="range"] { height: 44px; }
+  input[type="range"]::-webkit-slider-thumb { margin-top: -7px; }
 }

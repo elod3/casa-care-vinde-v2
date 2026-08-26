@@ -207,124 +207,13 @@
     window.addEventListener('resize', queue, { passive: true });
   }
 
-  /* ---------- benzile care se mișcă singure ----------
-     Pe telefon, blocurile de date stăteau unul sub altul și pagina ieșea o
-     cascadă. Acum fiecare grup se scurge lateral, ca banda de categorii de sus
-     — dar cu direcții care alternează pe măsură ce cobori: un rând pleacă spre
-     stânga, următorul spre dreapta. Alternanța e ce rupe monotonia; dacă toate
-     ar merge în aceeași parte, ar fi tot o cascadă, doar culcată.
-
-     Deriva se face mișcând `scrollLeft`, nu un `transform`. Diferența contează:
-     cu `transform`, degetul n-ar avea ce apuca — banda ar fi o animație pe care
-     o privești. Așa, e un scroll adevărat, pe care îl poți lua în mână oricând,
-     iar deriva doar îl împinge cât timp nu-l atinge nimeni. */
-  var drifters = Array.prototype.slice.call(document.querySelectorAll('[data-drift]'));
-  var mqPhone = window.matchMedia('(max-width: 720px)');
-
-  if (!REDUCED && drifters.length) {
-    var SPEED = 0.28;       // px pe cadru — lent cât să apuci să citești
-    var RESUME = 2600;      // cât stă pe loc după ce iei degetul
-
-    drifters.forEach(function (rail) {
-      var dir = parseFloat(rail.getAttribute('data-drift')) || 1;
-      var heldUntil = 0;
-      var cloned = false;
-      var raf = null;
-
-      /* Bucla se închide pe `period`: distanța dintre începutul setului
-         original și începutul primei copii, adică exact o rotație completă.
-         Nu `scrollWidth / 2` — ăla e corect doar dacă există fix o copie și
-         niciun capăt în plus, iar din asta ies săriturile la reluare.
-
-         Copiem setul de câte ori e nevoie ca banda să fie de cel puțin două
-         ecrane: cu două-trei elemente scurte, o singură copie lasă gol în
-         dreapta și bucla se vede. */
-      var originals = null, period = 0;
-
-      function clone() {
-        if (cloned) return;
-        cloned = true;
-        originals = Array.prototype.slice.call(rail.children);
-
-        function copiazaSet() {
-          originals.forEach(function (c) {
-            var d = c.cloneNode(true);
-            d.setAttribute('aria-hidden', 'true');
-            d.setAttribute('tabindex', '-1');
-            rail.appendChild(d);
-          });
-        }
-
-        /* Prima copie e obligatorie, nu condiționată: fără ea nu există punct
-           de reluare și banda nu se mișcă deloc, oricât de lată ar fi.
-           Următoarele se adaugă doar dacă banda e mai scurtă de două ecrane —
-           altfel, la reluare, s-ar vedea gol în dreapta. */
-        copiazaSet();
-        var runde = 0;
-        while (rail.scrollWidth < rail.clientWidth * 2 + 40 && runde < 5) {
-          copiazaSet();
-          runde++;
-        }
-        measure();
-      }
-
-      function measure() {
-        if (!originals || !originals.length) return;
-        var primaCopie = rail.children[originals.length];
-        period = primaCopie
-          ? primaCopie.offsetLeft - originals[0].offsetLeft
-          : rail.scrollWidth;
-      }
-
-      /* Poziția se ține aici, nu se citește din `scrollLeft` la fiecare cadru.
-         Browserul rotunjește valoarea la citire, așa că un pas de 0,28 px
-         s-ar pierde de fiecare dată și banda ar sta pe loc la nesfârșit.
-         Când omul o mișcă cu degetul, resincronizăm din scroll-ul real. */
-      var pos = 0;
-
-      function hold() {
-        heldUntil = Date.now() + RESUME;
-        pos = rail.scrollLeft;
-      }
-
-      ['pointerdown', 'touchstart', 'wheel', 'mouseenter'].forEach(function (ev) {
-        rail.addEventListener(ev, hold, { passive: true });
-      });
-      rail.addEventListener('focusin', hold);
-
-      function step() {
-        raf = null;
-        if (!mqPhone.matches) return;
-        if (Date.now() > heldUntil && period > 0) {
-          pos += SPEED * dir;
-          if (pos >= period) pos -= period;   // s-a închis cercul
-          else if (pos < 0) pos += period;
-          rail.scrollLeft = pos;
-        }
-        raf = requestAnimationFrame(step);
-      }
-
-      function sync() {
-        if (mqPhone.matches) {
-          clone();
-          measure();
-          // înapoi pornim de la o rotație, altfel am da imediat de capăt
-          if (dir < 0 && rail.scrollLeft === 0) rail.scrollLeft = period;
-          pos = rail.scrollLeft;
-          if (!raf) raf = requestAnimationFrame(step);
-        } else if (raf) {
-          cancelAnimationFrame(raf); raf = null;
-        }
-      }
-
-      sync();
-      // fonturile schimbă lățimile după ce se încarcă, deci remăsurăm
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
-      window.addEventListener('resize', measure, { passive: true });
-      (mqPhone.addEventListener ? mqPhone.addEventListener.bind(mqPhone, 'change')
-                                : mqPhone.addListener.bind(mqPhone))(sync);
-    });
-  }
+  /* Benzile NU se mai mișcă singure. Deriva se bătea cap în cap cu
+     scroll-snap (le dezactiva pe toate 14), clona carduri care rămâneau
+     invizibile și cifre oprite pe „0", scria scrollLeft la fiecare cadru
+     pe firul principal, și repornea singură după pauză — deci pica
+     WCAG 2.2.2. Indiciul „mai e ceva dincolo" îl dă acum masca din CSS.
+     Singura buclă care rămâne e .marquee: e decor, e aria-hidden, e pur
+     CSS și se oprește la deget. */
 
   /* ---------- teancul de cărți ----------
      Cifrele stau una peste alta și se schimbă la fiecare patru secunde. Fără
