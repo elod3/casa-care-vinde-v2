@@ -1,98 +1,59 @@
 <!doctype html>
-<html lang="ro" class="no-js">
+<html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cât îți aduce un parteneriat — Inhabit Media / arh. Alin Ionescu</title>
-<meta name="description" content="Alege-ți categoria, mișcă trei slidere și vezi de câte vânzări ai nevoie ca să ieși pe zero. Estimare, nu promisiune.">
-<meta name="theme-color" content="#0A0908">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E2B017'/%3E%3Cpath d='M7 15.5 16 8l9 7.5V25H7z' fill='none' stroke='%230A0F16' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Calculator — ce-ți aduce un parteneriat</title>
+<meta name="description" content="Mișcă sliderele cu cifrele tale și vezi de câte vânzări ai nevoie ca să iasă pe zero. Cifrele mele sunt puse conservator.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calculator — ce-ți aduce un parteneriat">
+<meta property="og:description" content="De câte vânzări ai nevoie ca parteneriatul să iasă pe zero. Scenariul realist e o rată măsurată, nu o presupunere.">
+<meta property="og:url" content="https://elod3.github.io/casa-care-vinde-v2/calculator.html">
+<meta property="og:image" content="https://elod3.github.io/casa-care-vinde-v2/assets/img/og.jpg">
+<link rel="icon" href="assets/img/inhabit-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=16">
-<script>document.documentElement.classList.remove('no-js');</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
-<!-- Ecran de încărcare. Stă peste o pagină care se încarcă normal dedesubt;
-     nu amână nimic. Se arată o singură dată pe sesiune. -->
-<div class="loader" id="loader" role="status" aria-live="polite">
-  <div class="loader__grid" aria-hidden="true"></div>
-  <div class="loader__glow" aria-hidden="true"></div>
-  <div class="loader__inner">
-    <img class="loader__mark" src="assets/img/inhabit-mark.png" alt="" width="60" height="60">
-    <p class="loader__word">
-      <b>inhabit<i>media</i></b>
-      <small>arh. alin ionescu</small>
-    </p>
-    <div class="loader__bar" aria-hidden="true"><i></i></div>
-    <p class="loader__meta">
-      <span class="loader__step">Se pregătește pagina</span>
-      <b class="loader__pct">0%</b>
-    </p>
-  </div>
-  <span class="loader__skip" aria-hidden="true">Apasă ca să intri</span>
-</div>
-
-<div class="atmos" aria-hidden="true"></div>
-<div class="progress" aria-hidden="true"></div>
-
-<header class="nav nav--solid" id="nav">
-  <div class="nav__inner">
-    <a class="brand brand--mark" href="index.html" aria-label="Inhabit Media — acasă">
-      <img src="assets/img/inhabit-mark.png" alt="" width="34" height="34">
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="nav__brand" href="./">
+      <img src="assets/img/inhabit-mark.png" alt="" width="26" height="27">
+      <span><b>arh. Alin Ionescu</b><span>Inhabit Studio</span></span>
     </a>
-
-    <div class="nav__bar">
-      <a class="nav__word" href="index.html">
-        <b>INHABIT<i>MEDIA</i></b><small>arh. alin ionescu</small>
-      </a>
-      <nav class="nav__links" id="navLinks">
-      <a href="index.html#audienta">Audiența</a>
-      <a href="rezultate.html">Rezultate</a>
-      <a href="calculator.html">Calculator</a>
-      <a href="despre.html">Despre</a>
-        <a class="btn btn--dark nav__cta-m" href="contact.html">Scrie-mi</a>
-      </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <a class="btn btn--primary nav__cta" href="contact.html">Scrie-mi</a>
+    <a class="btn btn--ink" href="index.html#scrie">Scrie-mi <i>→</i></a>
   </div>
 </header>
 
 <main>
-
-<section class="page-hero">
-  <div class="glow glow--tl" aria-hidden="true"></div>
-  <div class="blueprint" aria-hidden="true"></div>
+<section style="padding-bottom:clamp(2rem,1rem+3vw,3rem)">
   <div class="wrap">
-    <span class="slate" data-reveal><b>04</b><i></i>Calculator</span>
-    <h1 data-reveal style="--d:60ms">Nu te întreb <span>cât ai buget.</span><br>Te întreb <span class="hl">câte case vinzi.</span></h1>
-    <p class="lead" data-reveal style="--d:120ms">
-      Alege-ți categoria și mișcă sliderele. Cifrele din partea mea sunt puse
-      deliberat pesimist — dacă socoteala iese bine și așa, iese bine.
-    </p>
+    <div style="max-width:54ch">
+      <p class="eyebrow">Calculator</p>
+      <h1 style="font-size:clamp(2rem,1.2rem+3.4vw,3.4rem)">Nu te întreb cât ai buget. Te întreb <span class="mark">câte case vinzi.</span></h1>
+      <p class="lead" style="margin-top:1.4rem">
+        Alege categoria și mișcă sliderele. Cifrele din partea mea sunt puse
+        deliberat pesimist — <strong>dacă socoteala iese bine și așa, iese bine.</strong>
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- ---------- CALCULATORUL ---------- -->
-<section class="section section--tight" style="padding-top:0">
+<section style="padding-top:0">
   <div class="wrap">
     <div class="calc" id="calc">
 
       <!-- ======= INTRĂRI ======= -->
-      <div class="calc__panel" data-reveal>
-
-        <div class="calc__head">
+      <div class="panel">
+        <div class="panel__h">
           <h3>Cifrele tale</h3>
           <p>Le pre-completez cu valori tipice pentru categoria ta. Corectează-le — tu le știi mai bine.</p>
         </div>
 
-        <div class="field" style="margin:0">
+        <div class="field">
           <label for="c-cat">Ce vinzi</label>
           <select id="c-cat"></select>
           <span class="ctrl__hint" id="o-catref"></span>
@@ -105,8 +66,7 @@
             </span>
             <span class="ctrl__val" id="v-sale">20.000 €</span>
           </div>
-          <input type="range" id="c-sale" min="1000" max="150000" step="500" value="20000"
-                 aria-label="Valoarea medie a unei vânzări în euro">
+          <input type="range" id="c-sale" min="1000" max="150000" step="500" value="20000" aria-label="Valoarea medie a unei vânzări în euro">
         </div>
 
         <div class="ctrl">
@@ -116,8 +76,7 @@
             </span>
             <span class="ctrl__val" id="v-marja">30%</span>
           </div>
-          <input type="range" id="c-marja" min="5" max="60" step="1" value="30"
-                 aria-label="Marja brută în procente">
+          <input type="range" id="c-marja" min="5" max="60" step="1" value="30" aria-label="Marja brută în procente">
         </div>
 
         <div class="ctrl">
@@ -127,24 +86,22 @@
             </span>
             <span class="ctrl__val" id="v-close">20%</span>
           </div>
-          <input type="range" id="c-close" min="5" max="60" step="1" value="20"
-                 aria-label="Rata de închidere în procente">
+          <input type="range" id="c-close" min="5" max="60" step="1" value="20" aria-label="Rata de închidere în procente">
         </div>
 
-        <div class="calc__head" style="border-top:1px solid var(--line);padding-top:1.5rem">
+        <div class="panel__h" style="border-top:1px solid var(--line);padding-top:1.6rem;margin-top:2rem">
           <h3>Cifrele mele</h3>
-          <p>Astea sunt puse conservator, ca să nu-ți vând iluzii. Poți să le cobori și mai mult.</p>
+          <p>Puse conservator, ca să nu-ți vând iluzii. Poți să le cobori și mai mult.</p>
         </div>
 
         <div class="ctrl">
           <div class="ctrl__top">
             <span class="ctrl__label">Vizionări medii per material
-              <span class="ctrl__hint">Pornim de la media reală: 154.900 vizionări din 12 materiale, în campania NovingAIR</span>
+              <span class="ctrl__hint">Media reală a campaniei NovingAIR: 154.900 din 12 materiale</span>
             </span>
             <span class="ctrl__val" id="v-views">13.000</span>
           </div>
-          <input type="range" id="c-views" min="3000" max="150000" step="1000" value="13000"
-                 aria-label="Vizionări medii per material">
+          <input type="range" id="c-views" min="3000" max="150000" step="1000" value="13000" aria-label="Vizionări medii per material">
         </div>
 
         <div class="ctrl">
@@ -154,14 +111,11 @@
             </span>
             <span class="ctrl__val" id="v-piata">30%</span>
           </div>
-          <input type="range" id="c-piata" min="5" max="60" step="1" value="30"
-                 aria-label="Procent din audiență aflat în piață">
+          <input type="range" id="c-piata" min="5" max="60" step="1" value="30" aria-label="Procent din audiență aflat în piață">
         </div>
 
-        <div class="ctrl">
-          <div class="ctrl__top">
-            <span class="ctrl__label">Ce pachet luăm</span>
-          </div>
+        <div class="ctrl" style="margin-bottom:0">
+          <div class="ctrl__top"><span class="ctrl__label">Ce pachet luăm</span></div>
           <div class="seg" id="c-seg">
             <button type="button" data-pachet="basic"    aria-pressed="false">Basic</button>
             <button type="button" data-pachet="standard" aria-pressed="false">Standard</button>
@@ -169,192 +123,86 @@
             <button type="button" data-pachet="retainer" aria-pressed="true">Retainer</button>
           </div>
         </div>
-
       </div>
 
       <!-- ======= IEȘIRI ======= -->
-      <div class="calc__panel calc__panel--out" data-reveal style="--d:100ms">
+      <div class="calc__right">
 
-        <div class="bigfig">
-          <span class="micro">Pragul de rentabilitate</span>
-          <b id="o-be">8</b>
-          <span id="o-be-sub"></span>
-        </div>
+        <div class="panel panel--out">
+          <div class="bigfig">
+            <span class="micro">Pragul de rentabilitate</span>
+            <b id="o-be">8</b>
+            <span id="o-be-sub"></span>
+          </div>
 
-        <div>
-          <span class="micro" style="display:block;margin-bottom:.8rem">Marjă brută generată — trei scenarii</span>
-          <p class="ctrl__hint" style="margin:-.4rem 0 .8rem">
-            Scenariul realist nu e o presupunere: 170 de cereri la 154.900 de
-            vizionări în campania NovingAIR înseamnă 0,11%.
-          </p>
-          <div class="scenarios">
-            <div class="scen">
-              <span class="scen__k">Conservator</span>
-              <span class="scen__v" id="o-cons">—</span>
-              <span class="scen__s" id="o-cons-s"></span>
-            </div>
-            <div class="scen scen--mid">
-              <span class="scen__k">Realist</span>
-              <span class="scen__v" id="o-real">—</span>
-              <span class="scen__s" id="o-real-s"></span>
-            </div>
-            <div class="scen">
-              <span class="scen__k">Optimist</span>
-              <span class="scen__v" id="o-opt">—</span>
-              <span class="scen__s" id="o-opt-s"></span>
+          <div>
+            <span class="micro" style="display:block;margin-bottom:.5rem">Marjă brută generată — trei scenarii</span>
+            <p class="ctrl__hint" style="color:#A9A296;margin:0 0 .9rem">
+              Realistul nu e o presupunere: 170 de cereri la 154.900 de vizionări
+              în campania NovingAIR înseamnă 0,11%.
+            </p>
+            <div class="scen-row">
+              <div class="scen">
+                <span class="scen__k">Conservator</span>
+                <span class="scen__v" id="o-cons">—</span>
+                <span class="scen__s" id="o-cons-s"></span>
+              </div>
+              <div class="scen scen--mid">
+                <span class="scen__k">Realist</span>
+                <span class="scen__v" id="o-real">—</span>
+                <span class="scen__s" id="o-real-s"></span>
+              </div>
+              <div class="scen">
+                <span class="scen__k">Optimist</span>
+                <span class="scen__v" id="o-opt">—</span>
+                <span class="scen__s" id="o-opt-s"></span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <span class="micro" style="display:block;margin-bottom:.6rem">Cum am ajuns acolo — scenariul realist</span>
-          <div class="chain" id="o-chain"></div>
+        <div class="panel panel--detail">
+          <div>
+            <span class="micro" style="display:block;margin-bottom:.7rem">Cum am ajuns acolo — scenariul realist</span>
+            <div class="chain" id="o-chain"></div>
+          </div>
+
+          <p style="margin:0;font-size:.88rem;line-height:1.55;color:#C4BDB1" id="o-cost"></p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:.7rem">
+            <a class="btn btn--gold" href="index.html#scrie">Trimite-mi scenariul meu <i>→</i></a>
+            <a class="btn btn--line" href="index.html#dovada" style="color:var(--paper);border-color:rgba(255,255,255,.25)">Vezi campania reală</a>
+          </div>
+
+          <p class="disclaim" style="margin:0">
+            <b>Astea sunt estimări, nu promisiuni.</b> Calculatorul justifică prețul,
+            nu garantează lead-uri — nicio agenție serioasă nu poate garanta vânzări
+            din conținut educațional. Ce garantez e producția, distribuția și
+            raportarea. Garanția de lead-uri se discută după prima campanie, când
+            avem tracking pe categoria ta.
+          </p>
         </div>
-
-        <p class="note" style="margin:0" id="o-cost"></p>
-
-        <div style="display:flex;flex-wrap:wrap;gap:.7rem">
-          <a class="btn btn--primary" href="contact.html">Trimite-mi scenariul meu <span class="btn__a">→</span></a>
-          <a class="btn btn--ghost" href="rezultate.html">Vezi campania reală</a>
-        </div>
-
-        <p class="calc__foot">
-          <b>Astea sunt estimări, nu promisiuni.</b> Calculatorul justifică prețul, nu
-          garantează lead-uri — nicio agenție serioasă nu poate garanta vânzări din
-          conținut educațional. Ce pot garanta e producția, distribuția și raportarea.
-          Garanția de lead-uri se discută separat, după prima campanie, când avem
-          tracking pe categoria ta.
-        </p>
 
       </div>
-
     </div>
   </div>
 </section>
-
-<!-- ---------- DE CE FUNCȚIONEAZĂ ---------- -->
-<section class="section section--mist section--edge">
-  <div class="blueprint" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>—</b><i></i>Ce nu intră în calcul</span>
-      <h2 data-reveal style="--d:60ms">Trei lucruri pe care <span>calculatorul le ignoră.</span></h2>
-      <p class="lead" data-reveal style="--d:100ms">
-        Toate trei lucrează în favoarea ta. Le las pe dinafară ca să rămână
-        socoteala conservatoare.
-      </p>
-    </div>
-
-    <div class="cards rail">
-      <article class="card" data-reveal>
-        <span class="card__n">1</span>
-        <h4>Coada lungă a unui clip</h4>
-        <p>
-          Am socotit vizionările ca și cum s-ar opri la finalul campaniei. Nu se
-          opresc. Un material educațional bun rulează 12–24 de luni în
-          recomandări, iar cifra de mai sus se dublează în tăcere.
-        </p>
-      </article>
-      <article class="card" data-reveal style="--d:80ms">
-        <h4>Recomandarea directă</h4>
-        <span class="card__n">2</span>
-        <p>
-          Peste conținut există un arhitect cu 10.000 mp proiectați care ajunge
-          să scrie caiete de sarcini. Când produsul tău e în specificație, nu
-          mai concurezi pe preț.
-        </p>
-      </article>
-      <article class="card" data-reveal style="--d:160ms">
-        <span class="card__n">3</span>
-        <h4>Cei care nu construiesc acum</h4>
-        <p>
-          Am scos din calcul 70% din audiență, pe motiv că nu e în piață azi.
-          O parte dintre ei construiesc peste doi ani și își amintesc marca pe
-          care le-a explicat-o cineva în care au avut încredere.
-        </p>
-      </article>
-    </div>
-
-    <p class="note" style="margin-top:2.4rem" data-reveal>
-      <b>Un avertisment onest:</b> cifra de vizionări e o medie, nu o garanție
-      per clip. Un material poate face 4.000, altul 60.000 — diferența dintre
-      ele e hook-ul, iar hook-ul nu se poate promite dinainte. De aceea vindem
-      pachete cu mai multe materiale, nu clipuri izolate: media se stabilizează
-      abia după al cincilea.
-    </p>
-  </div>
-</section>
-
-<!-- ---------- CTA ---------- -->
-<section class="section cta">
-  <div class="wrap wrap--narrow">
-    <span class="micro" data-reveal>Pasul următor</span>
-    <h2 style="margin-top:1rem" data-reveal>Ți-a ieșit socoteala? <span>Hai s-o facem reală.</span></h2>
-    <p style="margin-top:1.1rem" data-reveal>
-      Spune-mi ce vinzi și în ce județe livrezi. Îți spun într-un mail dacă
-      audiența mea o cumpără sau nu.
-    </p>
-    <div class="cta__row" data-reveal>
-      <a class="btn btn--dark" href="contact.html">Scrie-mi ce vinzi <span class="btn__a">→</span></a>
-      <a class="btn btn--ghost" href="pachete.html">Ce conține un parteneriat</a>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div>
-        <a class="brand" href="index.html">
-          <img src="assets/img/inhabit-mark.png" alt="" width="30" height="30">
-          <span><b>INHABIT<i>MEDIA</i></b><small style="display:block">arh. alin ionescu</small></span>
-        </a>
-        <p style="margin-top:1rem;max-width:32ch">
-          Parteneriate de brand cu arhitectul pe care îl întreabă 93.000 de
-          oameni ce să pună în casă.
-        </p>
-      </div>
-      <div>
-        <h5>Site</h5>
-        <ul>
-          <li><a href="index.html#audienta">Audiența</a></li>
-          <li><a href="rezultate.html">Rezultate</a></li>
-          <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="pachete.html">Ce conține un parteneriat</a></li>
-          <li><a href="despre.html">Despre Alin</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="casa.html">Bonus: casa interactivă</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Canale</h5>
-        <ul>
-          <li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram @arh.ionescu</a></li>
-          <li><a href="https://www.facebook.com/arh.ionescu.alin/" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Ecosistem</h5>
-        <ul>
-          <li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li>
-          <li><a href="despre.html#buildwise">BuildWise</a></li>
-          <li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© <span id="year">2026</span> Inhabit Media · Arh. Ionescu George-Alin</span>
-      <span>Cifrele din calculator sunt estimări, nu promisiuni.</span>
-    </div>
+  <div class="wrap footer__in">
+    <span>© <span id="an">2026</span> arh. Ionescu George-Alin · Inhabit Studio</span>
+    <a href="index.html">Înapoi la prezentare</a>
+    <span class="footer__sp">Un singur partener pe categorie.</span>
   </div>
 </footer>
 
-<script src="assets/js/loader.js?v=2" defer></script>
-<script src="assets/js/main.js?v=10" defer></script>
-<script src="assets/js/calculator.js?v=1" defer></script>
+<script>
+  document.getElementById('an').textContent = new Date().getFullYear();
+  addEventListener('scroll', function () {
+    document.getElementById('nav').classList.toggle('is-stuck', scrollY > 8);
+  }, { passive: true });
+</script>
+<script src="assets/js/calculator.js"></script>
 </body>
 </html>

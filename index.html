@@ -1,451 +1,232 @@
 <!doctype html>
-<html lang="ro" class="no-js">
+<html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inhabit Media — parteneriate de brand cu arh. Alin Ionescu</title>
-<meta name="description" content="Zeci de mii de oameni care își construiesc casa acum. Sunt arhitect și le explic ce să pună în ea. Când produsul tău e răspunsul corect, nu mai e reclamă — e specificație.">
-<meta name="theme-color" content="#0A0908">
-<meta property="og:title" content="Inhabit Media — parteneriate de brand cu arh. Alin Ionescu">
-<meta property="og:description" content="Campania NovingAIR: 154.900+ vizionări și 170+ broșuri cerute, într-o lună.">
+<title>arh. Alin Ionescu — parteneriate de brand</title>
+<meta name="description" content="93.000 de oameni care își construiesc casa mă întreabă zilnic ce să pună în ea. Un singur partener pe categorie.">
 <meta property="og:type" content="website">
+<meta property="og:title" content="arh. Alin Ionescu — parteneriate de brand">
+<meta property="og:description" content="93.000 de oameni care își construiesc casa mă întreabă zilnic ce să pună în ea. Un singur partener pe categorie.">
+<meta property="og:url" content="https://elod3.github.io/casa-care-vinde-v2/">
 <meta property="og:image" content="https://elod3.github.io/casa-care-vinde-v2/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E2B017'/%3E%3Cpath d='M7 15.5 16 8l9 7.5V25H7z' fill='none' stroke='%230A0F16' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="assets/img/inhabit-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=16">
-<script>document.documentElement.classList.remove('no-js');</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
-<!-- Ecran de încărcare. Stă peste o pagină care se încarcă normal dedesubt;
-     nu amână nimic. Se arată o singură dată pe sesiune. -->
-<div class="loader" id="loader" role="status" aria-live="polite">
-  <div class="loader__grid" aria-hidden="true"></div>
-  <div class="loader__glow" aria-hidden="true"></div>
-  <div class="loader__inner">
-    <img class="loader__mark" src="assets/img/inhabit-mark.png" alt="" width="60" height="60">
-    <p class="loader__word">
-      <b>inhabit<i>media</i></b>
-      <small>arh. alin ionescu</small>
-    </p>
-    <div class="loader__bar" aria-hidden="true"><i></i></div>
-    <p class="loader__meta">
-      <span class="loader__step">Se pregătește pagina</span>
-      <b class="loader__pct">0%</b>
-    </p>
-  </div>
-  <span class="loader__skip" aria-hidden="true">Apasă ca să intri</span>
-</div>
-
-<div class="atmos" aria-hidden="true"></div>
-<div class="progress" aria-hidden="true"></div>
-
 <header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="brand brand--mark" href="index.html" aria-label="Inhabit Media — acasă">
-      <img src="assets/img/inhabit-mark.png" alt="" width="34" height="34">
+  <div class="wrap nav__in">
+    <a class="nav__brand" href="./">
+      <img src="assets/img/inhabit-mark.png" alt="" width="26" height="27">
+      <span><b>arh. Alin Ionescu</b><span>Inhabit Studio</span></span>
     </a>
-
-    <div class="nav__bar">
-      <a class="nav__word" href="index.html">
-        <b>INHABIT<i>MEDIA</i></b><small>arh. alin ionescu</small>
-      </a>
-      <nav class="nav__links" id="navLinks">
-      <a href="#audienta">Audiența</a>
-      <a href="rezultate.html">Rezultate</a>
-      <a href="calculator.html">Calculator</a>
-      <a href="despre.html">Despre</a>
-        <a class="btn btn--dark nav__cta-m" href="contact.html">Scrie-mi</a>
-      </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Meniu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <a class="btn btn--primary nav__cta" href="contact.html">Scrie-mi</a>
+    <a class="btn btn--ink" href="#scrie">Scrie-mi <i>→</i></a>
   </div>
 </header>
 
 <main>
 
-<!-- ================= HERO ================= -->
+<!-- ============================ 1 · HERO ============================ -->
 <section class="hero">
-  <!-- Fotografia lui Alin, developată din DSC00847.ARW (Sony A7III, 3968x2648).
-       Decupajul portret intră sub 980 px, la înălțime nativă (1986x2648).
-
-       `sizes` e mai mare decât lățimea reală, intenționat. Browserul socotește
-       de câți pixeli e nevoie din lățimea la care se așază imaginea, dar
-       `object-fit: cover` o mărește peste asta: un cadru 3:4 într-un ecran de
-       telefon e limitat de înălțime, deci ajunge lat cât 0,75 din înălțimea
-       ecranului — vreo 1,65 ori lățimea lui. Plus zoom-ul lent de 1,12.
-       Cu `sizes="100vw"`, browserul alege o variantă de două ori prea mică și
-       poza iese pixelată exact pe telefon.
-
-       Dacă apare assets/video/hero.mp4, videoul se suprapune peste imagine. -->
-  <div class="hero__media" aria-hidden="true">
-    <picture data-parallax="70">
-      <source media="(max-width: 980px)" type="image/webp" sizes="175vw"
-              srcset="assets/img/hero/alin-hero-portrait-1200.webp 1200w, assets/img/hero/alin-hero-portrait-1600.webp 1600w, assets/img/hero/alin-hero-portrait-1986.webp 1986w">
-      <source media="(max-width: 980px)" sizes="175vw"
-              srcset="assets/img/hero/alin-hero-portrait-1200.jpg 1200w, assets/img/hero/alin-hero-portrait-1600.jpg 1600w, assets/img/hero/alin-hero-portrait-1986.jpg 1986w">
-      <source type="image/webp" sizes="112vw"
-              srcset="assets/img/hero/alin-hero-1600.webp 1600w, assets/img/hero/alin-hero-2400.webp 2400w, assets/img/hero/alin-hero-3200.webp 3200w">
-      <source sizes="112vw"
-              srcset="assets/img/hero/alin-hero-1600.jpg 1600w, assets/img/hero/alin-hero-2400.jpg 2400w, assets/img/hero/alin-hero-3200.jpg 3200w">
-      <img src="assets/img/hero/alin-hero-1600.jpg" alt="" width="2400" height="1602" fetchpriority="high" decoding="async">
-    </picture>
-  </div>
-  <div class="hero__scrim" aria-hidden="true"></div>
-  <div class="blueprint" aria-hidden="true"></div>
-  <div class="glow glow--tl" aria-hidden="true"></div>
-
   <div class="wrap">
     <div class="hero__grid">
-      <div>
-        <p class="slate" data-reveal><b>Brand partnership</b><i></i>2026</p>
-        <h1 class="display" data-reveal style="--d:70ms">
-          Scriu <span>caietele de sarcini</span> în care intră <span class="hl">produsul tău.</span>
-        </h1>
-        <p class="lead hero__lead" data-reveal style="--d:140ms">
-          Zeci de mii de oameni își construiesc casa acum și mă întreabă pe mine ce
-          să pună în ea. Când produsul tău e răspunsul corect la o întrebare pe care
-          și-o pun oricum, nu mai e reclamă. E recomandare.
+      <div data-in>
+        <p class="eyebrow">Parteneriate de brand · 2026</p>
+        <h1>Scriu <span class="mark">caietele de sarcini</span> în care intră produsul tău.</h1>
+        <p class="lead">
+          Sunt arhitect. Zeci de mii de oameni care își construiesc casa acum mă
+          întreabă zilnic ce să pună în ea. <strong>Când produsul tău e răspunsul,
+          nu mai e reclamă.</strong>
         </p>
-        <div class="hero__cta" data-reveal style="--d:210ms">
-          <a class="btn btn--primary" href="calculator.html">Calculează ce-ți aduce <span class="btn__a">→</span></a>
-          <a class="btn btn--ghost" href="rezultate.html">Vezi ultima campanie</a>
-          <!-- Semnătura stă pe rândul butoanelor, nu sub el: pe un laptop de
-               800 px altfel împinge fâșia de cifre sub linia de plutire. -->
-          <p class="hero__sign">
-            <span>arh. Alin Ionescu</span>
-            <em>@arh.ionescu · Inhabit Studio</em>
-          </p>
+        <div class="hero__cta">
+          <a class="btn btn--gold" href="#categorii">Vezi categoriile libere <i>→</i></a>
+          <a class="btn btn--line" href="calculator.html">Calculează ce-ți aduce</a>
         </div>
+      </div>
+
+      <div class="hero__photo" data-in>
+        <!-- Sub 900px fotografia trece deasupra textului, pe format lat; peste,
+             stă în coloana din dreapta, pe portret. Deci două decupaje, nu unul
+             scalat. WebP întâi, JPG ca rezervă. -->
+        <picture>
+          <source media="(min-width: 900px)" type="image/webp"
+                  srcset="assets/img/hero/alin-hero-portrait-1200.webp 1200w, assets/img/hero/alin-hero-portrait-1600.webp 1600w"
+                  sizes="(min-width: 1180px) 480px, 40vw">
+          <source media="(min-width: 900px)"
+                  srcset="assets/img/hero/alin-hero-portrait-1200.jpg 1200w, assets/img/hero/alin-hero-portrait-1600.jpg 1600w"
+                  sizes="(min-width: 1180px) 480px, 40vw">
+          <source type="image/webp"
+                  srcset="assets/img/hero/alin-hero-1600.webp 1600w, assets/img/hero/alin-hero-2400.webp 2400w"
+                  sizes="100vw">
+          <img src="assets/img/hero/alin-hero-1600.jpg"
+               srcset="assets/img/hero/alin-hero-1600.jpg 1600w, assets/img/hero/alin-hero-2400.jpg 2400w"
+               sizes="100vw"
+               alt="arh. Alin Ionescu" width="1600" height="1000" fetchpriority="high" decoding="async">
+        </picture>
       </div>
     </div>
 
-    <!-- Cifrele Instagram sunt citite din Insights, 08.08.2026 (vezi capturile
-         din assets/img/proof/). Restul vin din raportul NovingAIR. -->
-    <div class="figures rail" data-reveal style="--d:340ms">
-      <div><b data-count="476006">0</b><span>vizionări pe Instagram, ultimele 90 de zile</span></div>
-      <div><b data-count="170" data-suffix="+">0</b><span>oameni care au cerut broșura unui partener</span></div>
-      <div><b data-count="360" data-suffix="+">0</b><span>comentarii sub materialele campaniei</span></div>
-      <div><b>PHI<i> ✓</i></b><span>certificare casă pasivă, Darmstadt</span></div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ================= BANDA DE CATEGORII ================= -->
-<div class="marquee" data-loop aria-hidden="true">
-  <div class="marquee__track">
-    <span>Tâmplărie<span></span></span><span>Ventilație cu recuperare</span><span>Structuri CLT</span>
-    <span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span>
-    <span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span>
-    <span>Tâmplărie</span><span>Ventilație cu recuperare</span><span>Structuri CLT</span>
-    <span>Zidărie</span><span>Izolații</span><span>Pompe de căldură</span><span>Fotovoltaic</span>
-    <span>Acoperiș</span><span>Etanșare</span><span>Smart home</span><span>Finisaje</span><span>Ferestre</span>
-  </div>
-</div>
-
-<!-- ================= 01 · CINE SUNT ================= -->
-<section class="section" id="cine">
-  <div class="glow glow--br" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="section-head" data-ch="01">
-      <span class="slate" data-reveal><b>01</b><i></i>Cine sunt</span>
-      <h2 data-reveal style="--d:60ms">Arhitect. <span>Și omul pe care îl întreabă înainte să toarne placa.</span></h2>
-    </div>
-
-    <div class="cards rail">
-      <article class="card" data-reveal>
-        <span class="card__n">01</span>
-        <h4>Nișa</h4>
-        <p>Oameni interesați de construcții eficiente energetic. Nu curioși — oameni
-          cu teren, credit și decizii de luat în lunile următoare.</p>
-      </article>
-      <article class="card" data-reveal style="--d:70ms">
-        <span class="card__n">02</span>
-        <h4>Tipul de conținut</h4>
-        <p>Educațional. Explic lucruri complicate simplu, în clipuri de un minut,
-          fără să vând nimic în primele 50 de secunde.</p>
-      </article>
-      <article class="card" data-reveal style="--d:140ms">
-        <span class="card__n">03</span>
-        <h4>Ce transmit</h4>
-        <p>O recomandare de la mine trece drept specificație, nu drept banner.</p>
-      </article>
-      <article class="card" data-reveal style="--d:210ms">
-        <span class="card__n">04</span>
-        <h4>Autoritatea</h4>
-        <p>Certified Passive House Designer, Passive House Institute Darmstadt.
-          Reperul european pe subiect — nu un curs de weekend.</p>
-      </article>
+    <!-- Cele trei cifre care contează. Fiecare se poate dovedi cu un screenshot. -->
+    <div class="figures" data-in>
+      <div>
+        <b>93.000</b>
+        <span>oameni pe Facebook, TikTok și Instagram</span>
+      </div>
+      <div>
+        <b>476.006</b>
+        <span>vizionări pe Instagram, ultimele 90 de zile</span>
+      </div>
+      <div>
+        <b>170</b>
+        <span>oameni care au cerut broșura unui partener</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= 02 · AUDIENȚA ================= -->
-<section class="section section--lit" data-nav="light" id="audienta">
-  <div class="blob blob--tl" aria-hidden="true"></div>
+<!-- ============================ 2 · AUDIENȚA ============================ -->
+<section id="audienta">
   <div class="wrap">
-    <div class="section-head" data-ch="02">
-      <span class="slate" data-reveal><b>02</b><i></i>Audiența</span>
-      <h2 data-reveal style="--d:60ms">Trei platforme. <span>Aceiași oameni.</span> Toți construiesc.</h2>
-      <p class="lead" data-reveal style="--d:120ms">
-        Nu se uită la case frumoase. Își fac una.
+    <div data-in style="max-width:52ch">
+      <p class="eyebrow">Cine mă urmărește</p>
+      <h2 style="font-size:var(--fs-h2)">Nu se uită la case frumoase. Își fac una.</h2>
+      <p class="lead" style="margin-top:1.4rem">
+        <strong>71% din vizionări vin de la oameni care nu mă urmăresc.</strong>
+        Conținutul iese singur din bulă, în fiecare zi, fără buget de promovare.
       </p>
     </div>
 
-    <div class="split">
-      <div class="stat-hero" data-reveal>
-        <p class="micro">Comunitate totală</p>
-        <!-- 43 K + 28,9 K + 21,1 K, din capturile de profil de la 26.08.2026.
-             Toate trei se pot dovedi cu un screenshot. -->
-        <b>93 K<i></i></b>
-        <p>Facebook, Instagram și TikTok — aceeași persoană,
-          trei locuri în care o găsești.</p>
+    <div class="grid" style="margin-top:clamp(2.5rem,1.5rem+3vw,4rem); grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+      <div class="plat" data-in>
+        <div class="plat__row">
+          <b>Facebook</b><var>43.000</var>
+          <div class="plat__bar"><i style="--w:100%"></i></div>
+        </div>
+        <div class="plat__row">
+          <b>TikTok</b><var>28.900</var>
+          <div class="plat__bar"><i style="--w:67%"></i></div>
+        </div>
+        <div class="plat__row">
+          <b>Instagram</b><var>21.100</var>
+          <div class="plat__bar"><i style="--w:49%"></i></div>
+        </div>
+        <p style="font-size:.86rem;color:var(--ink-2);margin-top:.4rem">
+          Trei conturi cu bifă. Aceiași oameni, în trei locuri — de aia cifra
+          care contează e mai jos, nu suma de aici.
+        </p>
       </div>
 
-      <div class="bars" data-reveal style="--d:80ms">
-        <div class="bar">
-          <div class="bar__top"><b>Facebook</b><span>43 K</span></div>
-          <div class="bar__track"><i class="bar__fill" style="--w:100%"></i></div>
-        </div>
-        <div class="bar">
-          <div class="bar__top"><b>TikTok</b><span>28,9 K</span></div>
-          <div class="bar__track"><i class="bar__fill" style="--w:67%"></i></div>
-        </div>
-        <div class="bar">
-          <div class="bar__top"><b>Instagram</b><span>21,1 K</span></div>
-          <div class="bar__track"><i class="bar__fill" style="--w:49%"></i></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Capturile din Instagram Insights, decupate de bara de status a
-         telefonului. Sunt aici ca dovadă: orice cifră de mai sus se poate
-         verifica în ele. De reînnoit când se schimbă perioada. -->
-    <div class="proof rail" data-reveal style="--d:140ms">
-      <figure class="proof__item">
-        <div class="proof__shot"><a href="assets/img/proof/ig-overview-90z.jpg" target="_blank" rel="noopener" aria-label="Deschide captura la mărime reală"><img src="assets/img/proof/ig-overview-90z.jpg" alt="Instagram Insights, ultimele 90 de zile: 476.006 vizionări, +2.807 urmăritori net, 157.143 spectatori unici" width="946" height="1885" loading="lazy" decoding="async"></a></div>
+      <figure data-in style="margin:0">
+        <a class="shot" href="assets/img/proof/ig-overview-90z.jpg" target="_blank" rel="noopener">
+          <div class="shot__img">
+            <img src="assets/img/proof/ig-overview-90z.jpg" alt="Instagram Insights: 476.006 vizionări, 157.143 spectatori unici, 90 de zile" width="946" height="1885" loading="lazy">
+          </div>
+        </a>
         <figcaption>
-          <b>90 de zile</b>
-          <span>476.006 vizionări · +2.807 urmăritori net · 157.143 oameni distincți.
-            71,1% din vizionări vin de la non-urmăritori — conținutul iese constant
-            din bula existentă.</span>
-        </figcaption>
-      </figure>
-      <figure class="proof__item">
-        <div class="proof__shot"><a href="assets/img/proof/ig-audienta-30z.jpg" target="_blank" rel="noopener" aria-label="Deschide captura la mărime reală"><img src="assets/img/proof/ig-audienta-30z.jpg" alt="Instagram Insights, audiență: 16.950 urmăritori, +6,0% în 30 de zile" width="946" height="1885" loading="lazy" decoding="async"></a></div>
-        <figcaption>
-          <b>Creșterea</b>
-          <span>La 8 august: 16.950 de urmăritori, +6,0% într-o lună. Clipurile
-            care aduc cei mai mulți oameni noi sunt exact cele tehnice — „cel mai
-            ieftin aer condiționat" e pe locul doi.</span>
+          <strong style="color:var(--ink)">157.143 de oameni distincți</strong> în 90 de zile,
+          doar pe Instagram. Captura e din Insights, nu din prezentare.
         </figcaption>
       </figure>
     </div>
-    <p class="note" data-reveal style="--d:200ms; margin-top:1.2rem">
-      Capturi din Instagram Insights, contul <b>@arh.ionescu</b>, la 8 august 2026.
-      Cifrele de pe Facebook și TikTok se pot documenta la fel, la cerere.
-    </p>
   </div>
 </section>
 
-<!-- ================= 03 · DOVADA ================= -->
-<section class="section">
-  <div class="glow glow--c" aria-hidden="true"></div>
+<!-- ============================ 3 · DOVADA ============================ -->
+<section class="dark" id="dovada">
   <div class="wrap">
-    <div class="section-head" data-ch="03">
-      <span class="slate" data-reveal><b>03</b><i></i>Dovada</span>
-      <h2 data-reveal style="--d:60ms">Campania NovingAIR. <span>O lună, douăsprezece materiale.</span></h2>
-      <p class="lead" data-reveal style="--d:120ms">
-        Zece clipuri, un carusel și o broșură despre ventilația cu recuperare de
-        căldură. Uite ce a ieșit.
+    <div data-in style="max-width:56ch">
+      <p class="eyebrow">Ce a produs un partener</p>
+      <h2 style="font-size:var(--fs-h2)">170 de oameni și-au lăsat contactul pentru o broșură despre ventilație.</h2>
+      <p class="lead" style="margin-top:1.4rem">
+        NovingAIR. Douăsprezece materiale, douăzeci și șase de zile.
+        <strong>Nu vizionări — cereri</strong>, de la oameni care își construiesc casa acum.
       </p>
     </div>
 
-    <div class="split" style="margin-bottom:1rem">
-      <div class="stat-hero" data-reveal>
-        <p class="micro" style="color:var(--yellow)">Ce a produs, nu ce s-a văzut</p>
-        <b data-count="170" data-suffix="+">0</b>
-        <p>oameni și-au lăsat contactul pentru o broșură de 17 pagini despre
-          ventilație. Nu vizionări — cereri.</p>
+    <div class="figures" data-in style="margin-top:clamp(2.5rem,1.5rem+3vw,4rem)">
+      <div><b>170</b><span>cereri de broșură</span></div>
+      <div><b>360</b><span>comentarii sub materialele campaniei</span></div>
+      <div><b>154.900</b><span>vizionări însumate, pe patru platforme</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 4 · CATEGORII ============================ -->
+<section id="categorii">
+  <div class="wrap">
+    <div data-in style="max-width:50ch">
+      <p class="eyebrow">Un singur partener pe categorie</p>
+      <h2 style="font-size:var(--fs-h2)">Nu-ți fac reclamă alături de doi concurenți în aceeași lună.</h2>
+      <p class="lead" style="margin-top:1.4rem">
+        Exclusivitate pe categorie, pe toată durata colaborării. Ventilația e luată.
+      </p>
+    </div>
+
+    <div class="cats" data-in style="margin-top:clamp(2.5rem,1.5rem+3vw,3.5rem)">
+      <div class="cat cat--taken">Ventilație cu recuperare <em>NovingAIR</em></div>
+      <div class="cat">Tâmplărie / ferestre <em>liber</em></div>
+      <div class="cat">Zidărie / blocuri ceramice <em>liber</em></div>
+      <div class="cat">Structură CLT / casă pe lemn <em>liber</em></div>
+      <div class="cat">Izolație termică minerală <em>liber</em></div>
+      <div class="cat">Izolație naturală / fibră de lemn <em>liber</em></div>
+      <div class="cat">Pompe de căldură <em>liber</em></div>
+      <div class="cat">Fotovoltaic + baterii <em>liber</em></div>
+      <div class="cat">Acoperiș / învelitori <em>liber</em></div>
+      <div class="cat">Etanșare / membrane <em>liber</em></div>
+      <div class="cat">Smart home / automatizări <em>liber</em></div>
+      <div class="cat">Finisaje interioare <em>liber</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 5 · OFERTA ============================ -->
+<section style="background:var(--paper-2)">
+  <div class="wrap">
+    <div data-in style="max-width:48ch;margin-bottom:clamp(2.2rem,1.5rem+2vw,3rem)">
+      <p class="eyebrow">Cum arată un parteneriat</p>
+      <h2 style="font-size:var(--fs-h2)">Ce primești.</h2>
+    </div>
+
+    <div class="offer">
+      <ul class="ticks" data-in>
+        <li>Clipuri, stories și un carusel în care produsul tău e răspunsul la o întrebare reală, nu un banner.</li>
+        <li>O broșură sau un checklist pe care oamenii îl cer singuri și își lasă contactul ca să-l primească.</li>
+        <li><strong>Aprobi fiecare material înainte să iasă.</strong> Nimic nu se publică fără ochiul tău pe el.</li>
+        <li>La final, cifrele exportate din Insights. Nu un screenshot.</li>
+        <li>Exclusivitate pe categoria ta, cât ține colaborarea.</li>
+      </ul>
+
+      <div class="price" data-in>
+        <p style="font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;color:#A9A296;margin-bottom:.8rem">Colaborare pe termen lung</p>
+        <b>4.000 €<span style="font-size:.4em;font-family:Inter,sans-serif;letter-spacing:0"> / lună</span></b>
+        <small>
+          Campaniile punctuale se cotează pe amploare. Îți trimit cifra după ce
+          îmi spui ce vinzi — depinde de câte materiale are nevoie produsul ca
+          să fie înțeles.
+        </small>
+        <a class="btn btn--gold" href="calculator.html" style="margin-top:1.4rem">Vezi ce-ți aduce <i>→</i></a>
       </div>
-      <!-- Teanc de cărți: cifrele campaniei stau una peste alta, iar la fiecare
-           patru secunde cea din față trece în spate. Ocupă locul uneia singure
-           și obligă ochiul să aștepte următoarea. Fără JS rămân stivuite și
-           vizibile — .deck le desface în listă simplă. -->
-      <div class="deck" data-deck data-reveal style="--d:80ms">
-        <div class="deck__card"><b data-count="360" data-suffix="+">0</b><span>comentarii organice, conversație reală sub clipuri</span></div>
-        <div class="deck__card"><b data-count="154900" data-suffix="+">0</b><span>vizionări însumate, în 26 de zile, pe patru platforme</span></div>
-        <div class="deck__card"><b data-count="3700" data-suffix="+">0</b><span>interacțiuni totale pe conținutul campaniei</span></div>
-        <div class="deck__dots" aria-hidden="true"></div>
-      </div>
-    </div>
-
-    <p class="note" data-reveal>
-      <b>Cele 170+ de broșuri sunt cel mai cald semnal din campanie.</b> Fiecare e un
-      om care a făcut un pas activ, a cerut materialul și și-a lăsat contactul.
-      Nu vizualizare pasivă, ci intenție.
-    </p>
-
-    <div style="margin-top:2rem" data-reveal>
-      <a class="btn btn--primary" href="rezultate.html">Raportul complet <span class="btn__a">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- ================= FORMATE ================= -->
-<section class="section section--mist section--edge">
-  <div class="blueprint" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>—</b><i></i>Formate</span>
-      <h2 data-reveal style="--d:60ms">Patru formate. <span>Fiecare cu treaba lui.</span></h2>
-    </div>
-
-    <!-- Fiecare format e o pereche: ecranul și explicația lui, nu două liste
-         separate pe care trebuie să le potrivești din ochi. La scroll, ecranul
-         coboară de sus și textul urcă de jos, iar cele două se întâlnesc.
-         Pune assets/video/reel-1.mp4 … reel-4.mp4 și înlocuiește .phone__empty
-         cu <video autoplay muted loop playsinline>. -->
-    <div class="formats">
-      <article class="format">
-        <div class="phone" data-reveal="down"><div class="phone__empty">Reel<br>de adăugat</div></div>
-        <div class="format__body" data-reveal="up">
-          <span class="format__n">01</span>
-          <h4>Reels — clipuri educaționale</h4>
-          <p>Formatul principal. Un hook puternic, o idee explicată, un CTA.
-            De aici vine aproape tot reach-ul.</p>
-        </div>
-      </article>
-
-      <article class="format format--flip">
-        <div class="phone" data-reveal="down"><div class="phone__empty">Story<br>de adăugat</div></div>
-        <div class="format__body" data-reveal="up">
-          <span class="format__n">02</span>
-          <h4>Stories</h4>
-          <p>Contactul zilnic. Întrebări, sondaje, linkuri directe — locul unde
-            audiența răspunde, nu doar privește.</p>
-        </div>
-      </article>
-
-      <article class="format">
-        <div class="phone" data-reveal="down"><div class="phone__empty">Carusel<br>de adăugat</div></div>
-        <div class="format__body" data-reveal="up">
-          <span class="format__n">03</span>
-          <h4>Carusel</h4>
-          <p>Conținut static optimizat pentru salvare. Un carusel bun e citit
-            de trei ori și trimis mai departe.</p>
-        </div>
-      </article>
-
-      <article class="format format--flip">
-        <div class="phone" data-reveal="down"><div class="phone__empty">Broșură<br>de adăugat</div></div>
-        <div class="format__body" data-reveal="up">
-          <span class="format__n">04</span>
-          <h4>Broșură / checklist</h4>
-          <p>Lead magnetul. Oamenii îl cer singuri și își lasă contactul — de
-            aici au ieșit cele 170 de cereri din campania NovingAIR.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 04 · CALCULATORUL ================= -->
-<section class="section section--lit" data-nav="light">
-  <div class="blob blob--br" aria-hidden="true"></div>
-  <div class="wrap wrap--narrow" style="text-align:center">
-    <span class="slate" data-reveal style="justify-content:center"><b>04</b><i></i>Calculator</span>
-    <h2 style="margin-top:1.2rem" data-reveal>
-      Nu te întreb cât ai buget. <span>Te întreb</span> <span class="hl">câte case vinzi.</span>
-    </h2>
-    <p class="lead" style="margin:1.3rem auto 0" data-reveal>
-      La o colaborare pe un an și o marjă de 6.000 € pe vânzare, îți trebuie
-      <b style="color:var(--on-lit)">opt case</b> ca să ieși pe zero. Opt, dintr-o audiență
-      de zeci de mii aflată în piață. Mișcă sliderele cu cifrele tale și vezi singur.
+<!-- ============================ 6 · CTA ============================ -->
+<section class="close" id="scrie">
+  <div class="wrap wrap--tight" data-in>
+    <p class="eyebrow">Categoria ta e încă liberă</p>
+    <h2>Spune-mi ce vinzi. Îți spun dacă audiența mea o cumpără.</h2>
+    <p>
+      Un mail, două paragrafe. Îți răspund în 24 de ore — inclusiv dacă
+      răspunsul e că nu are sens să lucrăm împreună.
     </p>
-    <div class="cta__row" data-reveal>
-      <a class="btn btn--primary" href="calculator.html">Deschide calculatorul <span class="btn__a">→</span></a>
-    </div>
-    <p class="micro" style="margin-top:1.4rem" data-reveal>
-      Estimare, nu promisiune
-    </p>
-  </div>
-</section>
-
-<!-- ================= 05 · CASA =================
-     Doar casa și un buton. Lista celor douăsprezece categorii a plecat în
-     casa.html: aici e invitația, acolo e inventarul. Imaginea e randată din
-     SVG-ul din casa.html — dacă desenul se schimbă, se regenerează (README). -->
-<section class="section section--casa">
-  <div class="casa-bg" aria-hidden="true">
-    <picture data-parallax="46">
-      <source type="image/webp" srcset="assets/img/casa-preview.webp">
-      <img src="assets/img/casa-preview.jpg" alt="" width="2600" height="1701" loading="lazy" decoding="async">
-    </picture>
-  </div>
-  <div class="casa-bg__scrim" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="section-head" data-ch="05">
-      <span class="slate" data-reveal><b>05</b><i></i>Sloturi</span>
-      <h2 data-reveal style="--d:60ms">O casă are <span>douăsprezece decizii.</span> Una singură e luată.</h2>
-      <p class="lead" data-reveal style="--d:120ms">
-        Fiecare categorie tehnică dintr-o casă e un slot de parteneriat, și țin
-        <b style="color:var(--ink)">o singură firmă pe categorie</b>. Nu-ți fac reclamă
-        alături de trei concurenți în aceeași lună.
-      </p>
-    </div>
-
-    <div class="casa-cta" data-reveal>
-      <a class="btn btn--primary" href="casa.html">Intră în casă <span class="btn__a">→</span></a>
-      <p>Secțiune printr-o casă pasivă. Dă scroll și camera se oprește la fiecare
-        element tehnic. Acolo vezi toate cele douăsprezece categorii, care e
-        ocupată și cât valorează fiecare.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PROCES ================= -->
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="slate" data-reveal><b>—</b><i></i>Producție</span>
-      <h2 data-reveal style="--d:60ms">Ce ai <span>tu de făcut.</span></h2>
-      <p class="lead" data-reveal style="--d:120ms">
-        Restul e treaba mea.
-      </p>
-    </div>
-
-    <div class="flow" data-reveal>
-      <span class="flow__step" data-key>Aprobi fiecare material</span><span class="flow__sep">→</span>
-      <span class="flow__step flow__step--big">Primești raportul</span>
-    </div>
-
-    <p class="note" style="margin-top:2.2rem" data-reveal>
-      Nimic nu iese fără ochiul tău pe el. La final primești cifrele reale,
-      exportate din Insights, nu un screenshot.
-    </p>
-  </div>
-</section>
-
-<!-- ================= CTA ================= -->
-<section class="section cta">
-  <div class="wrap wrap--narrow">
-    <span class="micro" data-reveal>Categoria ta e încă liberă</span>
-    <h2 style="margin-top:1rem" data-reveal>Spune-mi ce vinzi. <span>Îți spun dacă audiența mea o cumpără.</span></h2>
-    <p style="margin-top:1.1rem" data-reveal>
-      Un mail, două paragrafe. Îți răspund în 24 de ore.
-    </p>
-    <div class="cta__row" data-reveal>
-      <a class="btn btn--dark" href="contact.html">Scrie-mi ce vinzi <span class="btn__a">→</span></a>
-      <a class="btn btn--ghost" href="calculator.html">Fă-ți întâi socoteala</a>
+    <div class="close__row">
+      <a class="btn btn--ink" href="mailto:office@inhabitstudio.ro?subject=Parteneriat%20de%20brand">office@inhabitstudio.ro <i>→</i></a>
+      <a class="btn btn--line" href="calculator.html" style="border-color:rgba(22,19,15,.25)">Fă-ți întâi socoteala</a>
     </div>
   </div>
 </section>
@@ -453,56 +234,41 @@
 </main>
 
 <footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div>
-        <a class="brand" href="index.html">
-          <img src="assets/img/inhabit-mark.png" alt="" width="30" height="30">
-          <span><b>INHABIT<i>MEDIA</i></b><small style="display:block">arh. alin ionescu</small></span>
-        </a>
-        <p style="margin-top:1rem;max-width:32ch">
-          Parteneriate de brand cu arhitectul pe care îl întreabă 93.000 de
-          oameni ce să pună în casă.
-        </p>
-      </div>
-      <div>
-        <h5>Site</h5>
-        <ul>
-          <li><a href="index.html#audienta">Audiența</a></li>
-          <li><a href="rezultate.html">Rezultate</a></li>
-          <li><a href="calculator.html">Calculator</a></li>
-          <li><a href="pachete.html">Ce conține un parteneriat</a></li>
-          <li><a href="despre.html">Despre Alin</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="casa.html">Bonus: casa interactivă</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Canale</h5>
-        <ul>
-          <li><a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram @arh.ionescu</a></li>
-          <li><a href="https://www.facebook.com/arh.ionescu.alin/" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a></li>
-          <li><a href="https://youtube.com/@arh.alinionescu" target="_blank" rel="noopener">YouTube</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Ecosistem</h5>
-        <ul>
-          <li><a href="https://inhabitstudio.ro/" target="_blank" rel="noopener">Inhabit Studio</a></li>
-          <li><a href="despre.html#buildwise">BuildWise</a></li>
-          <li><a href="mailto:office@inhabitstudio.ro">office@inhabitstudio.ro</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© <span id="year">2026</span> Inhabit Media · Arh. Ionescu George-Alin</span>
-      <span>Un singur partener pe categorie.</span>
-    </div>
+  <div class="wrap footer__in">
+    <span>© <span id="an">2026</span> arh. Ionescu George-Alin · Inhabit Studio</span>
+    <a href="https://www.facebook.com/arh.ionescu.alin/" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://tiktok.com/@arh.alin.ionescu" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://instagram.com/arh.ionescu" target="_blank" rel="noopener">Instagram</a>
+    <span class="footer__sp">Un singur partener pe categorie.</span>
   </div>
 </footer>
 
-<script src="assets/js/loader.js?v=2" defer></script>
-<script src="assets/js/main.js?v=10" defer></script>
+<script>
+(function () {
+  document.getElementById('an').textContent = new Date().getFullYear();
+
+  var nav = document.getElementById('nav');
+  addEventListener('scroll', function () {
+    nav.classList.toggle('is-stuck', scrollY > 8);
+  }, { passive: true });
+
+  /* Reveal. IntersectionObserver, cu plasă: dacă nu există sau nu se declanșează,
+     totul rămâne vizibil — niciun element nu se poate pierde pe drum. */
+  var items = document.querySelectorAll('[data-in]');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function (n) { n.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function (n) { io.observe(n); });
+  addEventListener('load', function () {
+    setTimeout(function () { items.forEach(function (n) { n.classList.add('is-in'); }); }, 2500);
+  });
+})();
+</script>
 </body>
 </html>

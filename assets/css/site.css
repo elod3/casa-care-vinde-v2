@@ -1,0 +1,396 @@
+/* ==========================================================================
+   site.css — deck de vânzare parteneriate, arh. Alin Ionescu.
+   Scris de la zero. Din vechiul limbaj rămâne un singur lucru: galbenul.
+
+   Principiul: pagina asta e citită pe telefon, de un om de marketing, între
+   două ședințe. Are 40 de secunde. Deci: puține cuvinte, mult alb, o singură
+   culoare care aprinde, și nimic care se mișcă fără motiv.
+   ========================================================================== */
+
+:root {
+  /* singura culoare păstrată din vechiul site */
+  --gold:      #E2B017;
+  --gold-soft: #FBF1D6;
+
+  --paper:     #FCFBF9;
+  --paper-2:   #F4F1EB;
+  --ink:       #16130F;
+  --ink-2:     #5D564B;   /* 6,2:1 pe --paper */
+  --ink-3:     #8A8377;   /* 3,4:1 — DOAR pe text decorativ, niciodată pe informație */
+  --line:      #E4DFD5;
+  --deep:      #16130F;
+
+  --gutter: clamp(1.15rem, .6rem + 2.6vw, 3rem);
+  --measure: 1180px;
+  --bay:     clamp(4.5rem, 2.5rem + 8vw, 9rem);   /* aer între secțiuni */
+
+  --fs-display: clamp(2.5rem, 1.2rem + 5.6vw, 5.2rem);
+  --fs-h2:      clamp(1.85rem, 1.1rem + 3vw, 3.1rem);
+  --fs-h3:      clamp(1.15rem, 1rem + .6vw, 1.4rem);
+  --fs-lead:    clamp(1.05rem, .98rem + .5vw, 1.3rem);
+  --fs-body:    1.0625rem;
+  --fs-micro:   .72rem;
+
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern" 1;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; height: auto; }
+a { color: inherit; }
+
+h1, h2, h3, .display {
+  font-family: Fraunces, Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-variation-settings: "opsz" 96, "SOFT" 0, "WONK" 0;
+  line-height: 1.03;
+  letter-spacing: -.022em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0; }
+
+.wrap { width: 100%; max-width: var(--measure); margin-inline: auto; padding-inline: var(--gutter); }
+.wrap--tight { max-width: 780px; }
+
+section { padding-block: var(--bay); }
+
+/* --------------------------------------------------------------------------
+   Eticheta de secțiune. Un cuvânt, sus, cu o liniuță galbenă.
+   Înlocuiește capitolele numerotate: numărul nu spunea nimic.
+   -------------------------------------------------------------------------- */
+.eyebrow {
+  display: flex; align-items: center; gap: .6rem;
+  font-size: var(--fs-micro); font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 1.4rem;
+}
+.eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--gold); flex: 0 0 auto; }
+
+.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--ink-2); max-width: 46ch; }
+.lead strong { color: var(--ink); font-weight: 600; }
+
+/* galbenul se folosește pe text ca subliniere, nu ca fundal:
+   #E2B017 pe alb are 2,0:1 — ilizibil ca text, perfect ca linie */
+.mark {
+  background: linear-gradient(transparent 62%, var(--gold) 62% 92%, transparent 92%);
+  padding-inline: .04em;
+}
+
+/* --------------------------------------------------------------------------
+   NAV
+   -------------------------------------------------------------------------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(252, 251, 249, .86);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s;
+}
+.nav.is-stuck { border-bottom-color: var(--line); }
+.nav__in {
+  display: flex; align-items: center; gap: 1rem;
+  min-height: 62px;
+}
+.nav__brand { display: flex; align-items: center; gap: .55rem; text-decoration: none; margin-right: auto; }
+.nav__brand img { width: 26px; height: 27px; }
+.nav__brand b { font-size: .82rem; font-weight: 700; letter-spacing: .02em; }
+.nav__brand span { display: block; font-size: .66rem; color: var(--ink-2); letter-spacing: .08em; text-transform: uppercase; }
+
+/* --------------------------------------------------------------------------
+   BUTOANE — ținta minimă 44px peste tot, fără excepții
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 46px; padding: .75rem 1.3rem;
+  border: 1px solid transparent; border-radius: 100px;
+  font: inherit; font-size: .9rem; font-weight: 600; letter-spacing: -.005em;
+  text-decoration: none; cursor: pointer;
+  transition: transform .2s var(--ease), background-color .2s, border-color .2s;
+}
+.btn--gold { background: var(--gold); color: var(--deep); }
+.btn--ink  { background: var(--deep); color: var(--paper); }
+.btn--line { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn i { font-style: normal; transition: transform .25s var(--ease); }
+
+@media (hover: hover) {
+  .btn--gold:hover { background: #D0A20F; }
+  .btn--ink:hover  { background: #2A241C; }
+  .btn--line:hover { border-color: var(--ink); }
+  .btn:hover i { transform: translateX(3px); }
+}
+.btn:active { transform: scale(.975); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+/* --------------------------------------------------------------------------
+   HERO
+   -------------------------------------------------------------------------- */
+.hero { padding-top: clamp(2.5rem, 1rem + 5vw, 5rem); padding-bottom: 0; }
+.hero__grid {
+  display: grid; gap: clamp(2rem, 1rem + 5vw, 4rem);
+  grid-template-columns: 1fr;
+  align-items: end;
+}
+@media (min-width: 900px) { .hero__grid { grid-template-columns: 1.15fr .85fr; } }
+
+.hero h1 { font-size: var(--fs-display); }
+.hero .lead { margin-top: 1.6rem; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2.2rem; }
+
+.hero__photo {
+  position: relative; border-radius: 4px; overflow: hidden;
+  background: var(--paper-2);
+  aspect-ratio: 4 / 5;
+}
+.hero__photo picture, .hero__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+@media (max-width: 899px) { .hero__photo { aspect-ratio: 16 / 11; order: -1; } }
+
+/* fâșia de cifre de sub hero */
+.figures {
+  display: grid; gap: 1.6rem 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  margin-top: clamp(3rem, 1.5rem + 5vw, 5rem);
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.figures b {
+  display: block;
+  font-family: Fraunces, Georgia, serif; font-weight: 600;
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 2.9rem); line-height: 1;
+  letter-spacing: -.03em;
+  font-variant-numeric: tabular-nums;
+}
+.figures span { display: block; margin-top: .5rem; font-size: .86rem; color: var(--ink-2); line-height: 1.4; max-width: 26ch; }
+
+/* --------------------------------------------------------------------------
+   SECȚIUNE ÎNTUNECATĂ — o singură dată pe pagină, pentru dovadă
+   -------------------------------------------------------------------------- */
+.dark { background: var(--deep); color: var(--paper); }
+.dark .eyebrow { color: #A9A296; }
+.dark .lead { color: #C4BDB1; }
+.dark .lead strong { color: var(--paper); }
+.dark .figures { border-top-color: rgba(255,255,255,.14); }
+.dark .figures span { color: #A9A296; }
+.dark .card { background: rgba(255,255,255,.045); border-color: rgba(255,255,255,.1); }
+.dark .card p { color: #C4BDB1; }
+
+/* --------------------------------------------------------------------------
+   GRILE DE CARDURI
+   -------------------------------------------------------------------------- */
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: 6px;
+  padding: clamp(1.3rem, 1rem + 1vw, 1.9rem);
+}
+.card h3 { font-size: var(--fs-h3); margin-bottom: .6rem; }
+.card p { color: var(--ink-2); font-size: .95rem; line-height: 1.55; }
+
+/* --------------------------------------------------------------------------
+   PLATFORME — bare orizontale, citibile dintr-o privire
+   -------------------------------------------------------------------------- */
+.plat { display: grid; gap: 1.15rem; }
+.plat__row { display: grid; grid-template-columns: 1fr auto; gap: .3rem .9rem; align-items: baseline; }
+.plat__row b { font-size: .95rem; font-weight: 600; }
+.plat__row var { font-style: normal; font-variant-numeric: tabular-nums; font-weight: 600; font-size: 1.05rem; }
+.plat__bar { grid-column: 1 / -1; height: 6px; border-radius: 100px; background: var(--paper-2); overflow: hidden; }
+.dark .plat__bar { background: rgba(255,255,255,.1); }
+.plat__bar i { display: block; height: 100%; border-radius: 100px; background: var(--gold); width: var(--w); }
+
+/* --------------------------------------------------------------------------
+   CAPTURI DE DOVADĂ — mari, tapabile, decupate pe zona cu cifre
+   -------------------------------------------------------------------------- */
+.shots { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+.shot { display: block; text-decoration: none; }
+.shot__img {
+  position: relative; border-radius: 6px; overflow: hidden;
+  border: 1px solid var(--line); background: var(--paper-2);
+}
+.dark .shot__img { border-color: rgba(255,255,255,.14); }
+.shot__img img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 50% 0; }
+.shot__img::after {
+  content: "atinge pentru mărime reală";
+  position: absolute; left: .6rem; bottom: .6rem;
+  font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--deep); background: var(--gold);
+  padding: .4em .7em; border-radius: 100px;
+}
+.shot figcaption { margin-top: .8rem; font-size: .86rem; line-height: 1.45; color: var(--ink-2); }
+.dark .shot figcaption { color: #A9A296; }
+
+/* --------------------------------------------------------------------------
+   CATEGORII — ce e liber și ce e luat
+   -------------------------------------------------------------------------- */
+.cats { display: grid; gap: .5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.cat {
+  display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+  padding: .85rem 1rem;
+  border: 1px solid var(--line); border-radius: 5px;
+  font-size: .92rem; background: #fff;
+}
+.cat em { font-style: normal; font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.cat--taken { background: var(--gold-soft); border-color: #EBDCAE; }
+.cat--taken em { color: #8A6A08; }
+
+/* --------------------------------------------------------------------------
+   OFERTA
+   -------------------------------------------------------------------------- */
+.offer { display: grid; gap: 1.2rem; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .offer { grid-template-columns: 1.1fr .9fr; align-items: start; } }
+.ticks { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.ticks li { display: grid; grid-template-columns: 20px 1fr; gap: .7rem; align-items: start; font-size: .98rem; }
+.ticks li::before { content: "→"; color: var(--gold); font-weight: 700; line-height: 1.55; }
+.price {
+  background: var(--deep); color: var(--paper);
+  border-radius: 8px; padding: clamp(1.5rem, 1rem + 2vw, 2.2rem);
+}
+.price b { display: block; font-family: Fraunces, Georgia, serif; font-size: clamp(2.1rem, 1.5rem + 2.5vw, 3rem); line-height: 1; letter-spacing: -.03em; }
+.price small { display: block; margin-top: .6rem; font-size: .88rem; color: #C4BDB1; line-height: 1.5; }
+
+/* --------------------------------------------------------------------------
+   CTA FINAL + FOOTER
+   -------------------------------------------------------------------------- */
+.close { background: var(--gold); color: var(--deep); }
+.close h2 { font-size: var(--fs-h2); max-width: 18ch; }
+.close .eyebrow { color: #6B520A; }
+.close .eyebrow::before { background: var(--deep); }
+.close p { margin-top: 1.1rem; font-size: var(--fs-lead); max-width: 42ch; color: #4A3A08; }
+.close__row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
+
+.footer { border-top: 1px solid var(--line); padding-block: 2.5rem; font-size: .86rem; color: var(--ink-2); }
+.footer__in { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; }
+.footer a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--line); }
+@media (hover: hover) { .footer a:hover { color: var(--ink); border-bottom-color: var(--gold); } }
+.footer__sp { margin-left: auto; }
+
+/* --------------------------------------------------------------------------
+   REVEAL — o singură animație pe tot site-ul, și aia discretă
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  [data-in] { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  [data-in].is-in { opacity: 1; transform: none; }
+}
+
+/* iOS mărește pagina la focus sub 16px și nu o mai dă înapoi */
+input, textarea, select, button { font: inherit; }
+@media (max-width: 720px) { input, textarea, select { font-size: 16px; } }
+
+/* ==========================================================================
+   CALCULATOR
+   JS-ul se leagă de ID-uri (#c-*, #o-*, #v-*) și generează .chain__row —
+   markup-ul se poate schimba oricât, atâta timp cât ID-urile rămân.
+   ========================================================================== */
+.calc { display: grid; gap: 1.2rem; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 1000px) { .calc { grid-template-columns: 1fr 1fr; } }
+
+.panel { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: clamp(1.3rem, 1rem + 1.4vw, 2rem); }
+.panel--out { background: var(--deep); color: var(--paper); border-color: var(--deep); display: grid; gap: 1.6rem; }
+
+.panel__h { margin-bottom: 1.5rem; }
+.panel__h h3 { font-size: var(--fs-h3); }
+.panel__h p { margin-top: .45rem; font-size: .88rem; color: var(--ink-2); line-height: 1.5; }
+
+.field { display: grid; gap: .45rem; margin-bottom: 1.8rem; }
+.field label { font-size: .82rem; font-weight: 600; }
+.field select {
+  width: 100%; padding: .7rem .85rem; min-height: 46px;
+  border: 1px solid var(--line); border-radius: 5px; background: var(--paper);
+  color: var(--ink);
+}
+
+.ctrl { margin-bottom: 1.6rem; }
+.ctrl__top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: .3rem; }
+.ctrl__label { font-size: .86rem; font-weight: 600; }
+.ctrl__hint { display: block; font-size: .76rem; font-weight: 400; color: var(--ink-2); line-height: 1.4; margin-top: .12rem; }
+.ctrl__val { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 1rem; white-space: nowrap; }
+
+/* pista are 6px, dar zona de atins are 44 — pragul pe touch */
+input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 44px; background: transparent; cursor: pointer; margin: 0;
+}
+input[type="range"]::-webkit-slider-runnable-track { height: 6px; border-radius: 100px; background: var(--paper-2); }
+input[type="range"]::-moz-range-track { height: 6px; border-radius: 100px; background: var(--paper-2); }
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 22px; height: 22px; margin-top: -8px; border-radius: 50%;
+  background: var(--gold); border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.22);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--gold); border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.22);
+}
+
+.seg { display: flex; flex-wrap: wrap; gap: .4rem; }
+.seg button {
+  flex: 1 1 auto; min-height: 44px; padding: .5rem .9rem;
+  border: 1px solid var(--line); border-radius: 100px; background: var(--paper);
+  font-size: .85rem; font-weight: 600; color: var(--ink-2); cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.seg button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--deep); }
+
+.bigfig b {
+  display: block; font-family: Fraunces, Georgia, serif; font-weight: 600;
+  font-size: clamp(3.4rem, 2rem + 7vw, 5.5rem); line-height: .95; letter-spacing: -.04em;
+  color: var(--gold); font-variant-numeric: tabular-nums;
+}
+.bigfig > span:last-child { display: block; margin-top: .5rem; font-size: .95rem; color: #C4BDB1; line-height: 1.5; max-width: 34ch; }
+.bigfig em { font-style: normal; color: var(--paper); font-weight: 600; }
+
+.micro { font-size: var(--fs-micro); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #A9A296; }
+
+.scen-row { display: grid; gap: .55rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); }
+.scen { border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: .9rem .95rem; }
+.scen--mid { border-color: var(--gold); background: rgba(226,176,23,.08); }
+.scen__k { display: block; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #A9A296; }
+.scen--mid .scen__k { color: var(--gold); }
+.scen__v { display: block; margin-top: .4rem; font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.scen__s { display: block; margin-top: .25rem; font-size: .74rem; color: #A9A296; line-height: 1.4; }
+
+.chain { display: grid; gap: .1rem; }
+.chain__row {
+  display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; align-items: baseline;
+  padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.09);
+  font-size: .84rem; color: #C4BDB1;
+}
+.chain__row b { color: var(--paper); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.chain__row--total { border-bottom: 0; border-top: 1px solid var(--gold); margin-top: .3rem; padding-top: .8rem; }
+.chain__row--total b { color: var(--gold); font-size: 1.05rem; }
+
+.disclaim { font-size: .78rem; line-height: 1.55; color: #A9A296; }
+.disclaim b { color: #C4BDB1; }
+
+/* Pe telefon: rezultatul deasupra comenzilor și lipit sub bară, desfășurarea
+   dedesubt. Pe desktop: comenzile stânga, rezultatul + desfășurarea dreapta.
+   `display: contents` face copiii din .calc__right să devină elemente de grilă
+   direct, ca să le pot pune de-o parte și de alta a comenzilor pe telefon. */
+.calc__right { display: contents; }
+.panel--detail { background: var(--deep); color: var(--paper); border-color: var(--deep); display: grid; gap: 1.4rem; }
+
+@media (max-width: 999px) {
+  .panel--out    { order: -1; position: sticky; top: 62px; z-index: 5; gap: 1rem; }
+  .panel         { order: 0; }
+  .panel--detail { order: 1; }
+  .panel--out .bigfig b { font-size: clamp(2.6rem, 1.8rem + 4vw, 3.6rem); }
+}
+
+@media (min-width: 1000px) {
+  .calc__right { display: grid; gap: 1.2rem; align-content: start; position: sticky; top: 82px; }
+}
