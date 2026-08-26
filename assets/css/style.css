@@ -42,7 +42,7 @@ table { border-collapse: collapse; width: 100%; }
      galbenul. Vechiul navy a ieșit complet din paletă — secțiunile care erau
      albastre sunt acum galbene (.section--lit). */
   --bg:        #0A0908;
-  --bg-2:      #121110;
+  --bg-2:      #1C1917;   /* era #121110: raport 1,10 față de --bg, adică invizibil. Acum 1,22. */
   --bg-3:      #1B1917;
 
   /* brand, neatins */
@@ -269,7 +269,20 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .slate b { color: var(--yellow); font-weight: 800; }
 .slate i { display: block; width: clamp(28px, 5vw, 64px); height: 1px; background: var(--line-2); font-style: normal; }
 
-.section-head { display: grid; gap: 1.2rem; margin-bottom: clamp(2.2rem, 1rem + 3.5vw, 4.2rem); }
+.section-head { display: grid; gap: 1.2rem; margin-bottom: clamp(2.2rem, 1rem + 3.5vw, 4.2rem); position: relative; }
+.section-head > * { position: relative; z-index: 1; }
+/* Numărul de capitol, scris o dată mare și stins. Pe telefon e singurul reper
+   de „unde sunt" într-o coloană de blocuri identice — .slate are 10,5px. */
+.section-head[data-ch]::before {
+  content: attr(data-ch);
+  position: absolute; z-index: 0; pointer-events: none;
+  right: -.04em; top: -.34em;
+  font-size: clamp(6rem, 24vw, 14rem);
+  font-weight: 800; line-height: .78; letter-spacing: -.07em;
+  color: var(--ink); opacity: .05;
+  font-variant-numeric: tabular-nums;
+}
+.section--lit .section-head[data-ch]::before { color: var(--on-lit); opacity: .09; }
 .section-head .pill, .section-head .slate { justify-self: start; }
 
 /* pastila galbenă din deck */
@@ -436,17 +449,23 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .nav--open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 980px) {
-  .nav__cta { display: none; }
-  .nav__cta-m { display: inline-flex; }
+  /* CTA-ul nu intră sub hamburger. Se strânge, dar rămâne pe ecran: e singurul
+     lucru pe care îl vindem, n-are ce căuta într-un sertar. */
+  .nav__cta { display: inline-flex; padding: .7em 1.05em; font-size: .68rem; letter-spacing: .08em; }
+  .nav__cta-m { display: none; }
+  .nav__word small { display: none; }
+  .nav__bar { gap: .6rem; padding-right: .45rem; }
   .nav__toggle { display: block; }
   .nav__links {
     position: fixed; inset: calc(var(--nav-pad) + 62px) var(--gutter) auto var(--gutter);
     flex-direction: column; align-items: stretch; gap: 0; margin-left: 0; padding: .4rem 1.3rem 1.4rem;
     background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lg);
     box-shadow: var(--shadow-lg);
-    clip-path: inset(0 0 100% 0); transition: clip-path .45s var(--ease);
+    /* clip-path ascunde doar vizual: linkurile rămâneau în ordinea de tab. */
+    visibility: hidden;
+    clip-path: inset(0 0 100% 0); transition: clip-path .45s var(--ease), visibility 0s .45s;
   }
-  .nav--open .nav__links { clip-path: inset(0 0 0 0); }
+  .nav--open .nav__links { clip-path: inset(0 0 0 0); visibility: visible; transition: clip-path .45s var(--ease), visibility 0s; }
   .nav__links a:not(.btn) {
     padding-block: .95rem; border-bottom: 1px solid var(--line);
     font-size: 1rem; color: var(--ink-2); text-transform: none; letter-spacing: 0;
@@ -506,7 +525,10 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
   /* Zoom mai scurt pe telefon: sursa are 2648 px înălțime, iar un ecran de
      3x are nevoie de ~2530. La 1,12 am fi mărit poza; la 1,06 nu. */
   .hero__media img { animation-name: slowzoomSm; }
-  .hero { padding-top: calc(var(--nav-h) + 19svh); }
+  /* 19svh la 664svh însemna 126px de gol în capul primului ecran, iar
+     socoteala dădea ~777px de conținut într-un ecran de 664 — deci butoanele
+     începeau sub margine. 9svh lasă capul liber și aduce CTA-ul în ecran. */
+  .hero { padding-top: calc(var(--nav-h) + 9svh); }
   .hero__scrim {
     background:
       linear-gradient(180deg, rgba(7, 11, 17, .62) 0%, rgba(7, 11, 17, .06) 16%, rgba(7, 11, 17, .58) 34%, rgba(7, 11, 17, .9) 64%, var(--bg) 97%);
@@ -646,6 +668,12 @@ h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; line-height: 
 .card > * { position: relative; }
 .card p { font-size: .9rem; color: var(--ink-2); }
 .card__n {
+  /* erau 4 pătrate galbene pline pe secțiune, în șase locuri pe site.
+     Sunt numerotare — deci arată ca eticheta de capitol, același vocabular. */
+  width: auto; height: auto; background: none; border-radius: 0;
+  display: block; place-items: unset; box-shadow: none;
+  color: var(--yellow); font-weight: 800;
+  font-size: .66rem; letter-spacing: .22em; margin-bottom: .1rem;
   width: 38px; height: 38px; border-radius: 10px;
   background: var(--yellow); color: #0A0F16;
   display: grid; place-items: center; font-weight: 800; font-size: .95rem;
@@ -714,7 +742,12 @@ tr.price td, tr.price th { font-weight: 800; font-size: 1.05rem; background: var
 
 /* ---------- 15. Flow proces ---------- */
 .flow { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; }
-.flow__step { background: var(--yellow); color: #0A0F16; font-weight: 700; font-size: .88rem; padding: .6em 1.1em; border-radius: 12px; }
+.flow__step {
+  /* Nouă dreptunghiuri galbene pline erau cel mai zgomotos element de pe
+     pagină — pentru conținutul care îl interesează cel mai puțin pe cumpărător.
+     Pașii devin schiță; doar destinația rămâne aprinsă. */
+  background: transparent; color: var(--ink-2);
+  border: 1px solid var(--line-2); box-shadow: none; background: var(--yellow); color: #0A0F16; font-weight: 700; font-size: .88rem; padding: .6em 1.1em; border-radius: 12px; }
 .flow__step--big { font-size: clamp(1.05rem, .9rem + .9vw, 1.5rem); font-weight: 800; padding: .55em 1.2em; }
 .flow__sep { color: var(--ink-3); font-weight: 700; }
 
@@ -1137,7 +1170,9 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
 .phones { display: grid; gap: clamp(1rem, .5rem + 2vw, 2rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
 .phone {
   aspect-ratio: 9 / 19.5; border-radius: 28px; overflow: hidden; position: relative;
-  border: 6px solid #1C1A17; background: var(--bg-2);
+  /* ecranul rămâne la negrul vechi: --bg-2 s-a luminat la #1C1917, iar rama
+     ar fi ajuns aceeași culoare cu ecranul și telefonul ar fi dispărut. */
+  border: 6px solid #1C1A17; background: #121110;
   box-shadow: var(--shadow-lg);
   transition: transform .45s var(--ease);
 }
@@ -1387,18 +1422,27 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   .section--casa { min-height: min(66svh, 560px); }
 
   /* fâșia de cifre din hero intră și ea în bandă */
+  /* Patru cifre de aceeași mărime, pe orizontală, în primul ecran — și „PHI ✓",
+     care nu e cifră, în rând cu trei contoare. O cifră mare care ancorează,
+     trei mici care o susțin. */
   .figures.rail {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem 1rem;
+    margin-inline: 0; padding-inline: 0; overflow: visible;
+    -webkit-mask-image: none; mask-image: none;
     border-top: 1px solid var(--line-2);
-    padding-top: 1rem;
+    padding-top: 1.1rem;
   }
-  .figures.rail > * { flex: 0 0 min(58%, 210px); }
+  .figures.rail > * { flex: none; }
+  .figures.rail > *:first-child { grid-column: 1 / -1; }
+  .figures.rail > *:first-child b { font-size: clamp(2.4rem, 1.6rem + 4vw, 3.2rem); }
+  .figures b { font-size: clamp(1.5rem, 1.1rem + 2.6vw, 2rem); }
+  .figures span { font-size: .78rem; color: var(--ink-2); }
   .rail::after { content: ""; flex: 0 0 calc(var(--gutter) - .8rem); }
 
   /* mockupurile sunt mai înguste: patru ecrane de telefon unul sub altul
      mâncau două ecrane și jumătate de derulat, degeaba */
-  .phones.rail > * { flex: 0 0 min(52%, 200px); }
-  .phones.rail { align-items: center; }
-
   /* cifrele mari au nevoie de ceva mai multă lățime decât restul, altfel
      eticheta de sub ele se rupe în coloane de două cuvinte */
   .stat-grid.rail > * { flex: 0 0 min(82%, 330px); }
@@ -1406,13 +1450,34 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   /* Capturile din Insights: telefonul deasupra, explicația dedesubt, ambele
      pe mijlocul cardului. Lipit de marginea din stânga, telefonul arăta a
      listă tăiată; centrat arată a obiect așezat. */
-  .proof.rail > * {
-    flex: 0 0 min(82%, 330px);
-    grid-template-columns: 1fr;
-    justify-items: center; text-align: center;
+  /* Capturile din Insights sunt singura dovadă verificabilă de pe site, și
+     erau la 158px dintr-o sursă de 946px — micșorare de 6×, deci cifrele
+     aveau 6,7px. O dovadă pe care n-o poți citi nu e o dovadă. Ies din bandă,
+     ies din rama de telefon (omul ține deja un telefon în mână), se decupează
+     pe zona cu cifre și se deschid la atingere. Micșorare 2,4×. */
+  .proof {
+    display: grid !important; grid-template-columns: 1fr; gap: 1.6rem;
+    margin-inline: 0; padding-inline: 0; overflow: visible;
+    -webkit-mask-image: none; mask-image: none;
   }
-  .proof.rail .proof__shot { max-width: 172px; width: 100%; margin-inline: auto; }
-  .proof.rail figcaption { justify-items: center; }
+  .proof__item { grid-template-columns: 1fr; gap: .8rem; text-align: left; justify-items: stretch; }
+  .proof__shot {
+    position: relative;
+    max-width: none; width: 100%; margin-inline: 0;
+    border-width: 0; border-radius: 14px;
+    box-shadow: var(--shadow), 0 0 0 1px var(--line) inset;
+  }
+  .proof__shot::before, .proof__shot::after { display: none; }
+  .proof__shot img { aspect-ratio: 5 / 4; object-fit: cover; object-position: 50% 0; }
+  .proof__shot a { display: block; }
+  .proof__shot a::after {
+    content: "atinge pentru mărime reală";
+    position: absolute; left: .7rem; bottom: .6rem;
+    font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 700; color: var(--yellow);
+    background: rgba(10, 9, 8, .78); padding: .4em .7em; border-radius: 100px;
+  }
+  .proof figcaption { justify-items: start; text-align: left; }
 
   /* Cardurile cu text intră și ele în bandă — erau exact blocurile suprapuse
      din care pagina ieșea cascadă. Sunt mai late decât cifrele: sub 82% textul
@@ -1508,6 +1573,9 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   width: 22px; height: 3px; border-radius: 100px; padding: 0;
   background: var(--line-2); transition: background-color .35s, width .35s var(--ease);
 }
+/* ținta reală, invizibilă: 44px pe verticală, fără să miște desenul de 3px */
+.deck__dots button { position: relative; }
+.deck__dots button::after { content: ""; position: absolute; left: -6px; right: -6px; top: -20px; bottom: -20px; }
 .deck__dots button[aria-current="true"] { background: var(--yellow); width: 34px; }
 .section--lit .deck__dots button { background: rgba(23, 20, 10, .25); }
 .section--lit .deck__dots button[aria-current="true"] { background: var(--on-lit); }
@@ -1589,4 +1657,39 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   /* ținta minimă pe touch e 44px; desenul rămâne același, doar zona crește */
   input[type="range"] { height: 44px; }
   input[type="range"]::-webkit-slider-thumb { margin-top: -7px; }
+}
+
+/* ==========================================================================
+   33. RITM PE TELEFON
+   ========================================================================== */
+@media (max-width: 720px) {
+  /* Antetul stătea la 35px de conținut și la 102px de secțiunea de dinainte:
+     ochiul îl grupa cu cardurile de dedesubt, nu cu propria secțiune. */
+  .section-head { margin-bottom: 2.1rem; gap: .9rem; }
+
+  /* Poppins ExtraLight la 16,7px într-un gri stins nu e text, e ceață.
+     Greutatea 200 e frumoasă la 60px, nu la 16. */
+  .marquee span { font-weight: 300; color: var(--ink-2); font-size: 1.05rem; }
+  .marquee { padding-block: .85rem; }
+
+  /* Un mockup gol de 118px arată a imagine care n-a încărcat. Până apar
+     clipurile reale, formatul se anunță cu textul lui, nu cu o ramă goală.
+     Când vin clipurile: șterge regula. */
+  .format:has(.phone__empty) { grid-template-columns: 1fr; gap: .5rem; }
+  .format:has(.phone__empty) .phone { display: none; }
+  .format:has(.phone__empty) .format__body { border-left: 2px solid var(--yellow); padding-left: 1rem; }
+
+  /* ținta minimă pe touch, fără să se schimbe desenul */
+  .seg button { min-height: 44px; }
+}
+
+@media (max-width: 460px) {
+  /* la 6 rânduri de titlu, primul ecran nu mai avea loc de nimic altceva */
+  :root { --fs-h1: clamp(1.7rem, 0.4rem + 6.2vw, 2.6rem); }
+}
+
+@media (max-width: 420px) {
+  /* pe telefoanele înguste din CTA rămâne doar verbul */
+  .nav__cta { font-size: 0; padding: .8em 1em; }
+  .nav__cta::before { content: "Scrie-mi"; font-size: .68rem; letter-spacing: .08em; }
 }
