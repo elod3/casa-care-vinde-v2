@@ -749,6 +749,7 @@ tr.price td, tr.price th { font-weight: 800; font-size: 1.05rem; background: var
   background: transparent; color: var(--ink-2);
   border: 1px solid var(--line-2); box-shadow: none; background: var(--yellow); color: #0A0F16; font-weight: 700; font-size: .88rem; padding: .6em 1.1em; border-radius: 12px; }
 .flow__step--big { font-size: clamp(1.05rem, .9rem + .9vw, 1.5rem); font-weight: 800; padding: .55em 1.2em; }
+.flow__step[data-key] { border-color: rgba(226,176,23,.45); color: var(--ink); }
 .flow__sep { color: var(--ink-3); font-weight: 700; }
 
 /* ---------- 16. Profiluri audiență ---------- */
@@ -1672,13 +1673,6 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   .marquee span { font-weight: 300; color: var(--ink-2); font-size: 1.05rem; }
   .marquee { padding-block: .85rem; }
 
-  /* Un mockup gol de 118px arată a imagine care n-a încărcat. Până apar
-     clipurile reale, formatul se anunță cu textul lui, nu cu o ramă goală.
-     Când vin clipurile: șterge regula. */
-  .format:has(.phone__empty) { grid-template-columns: 1fr; gap: .5rem; }
-  .format:has(.phone__empty) .phone { display: none; }
-  .format:has(.phone__empty) .format__body { border-left: 2px solid var(--yellow); padding-left: 1rem; }
-
   /* ținta minimă pe touch, fără să se schimbe desenul */
   .seg button { min-height: 44px; }
 }
@@ -1692,4 +1686,13 @@ input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25); }
   /* pe telefoanele înguste din CTA rămâne doar verbul */
   .nav__cta { font-size: 0; padding: .8em 1em; }
   .nav__cta::before { content: "Scrie-mi"; font-size: .68rem; letter-spacing: .08em; }
+}
+
+@media (max-width: 720px) {
+  /* Cele patru formate erau patru rânduri identice: mockup stânga, text dreapta.
+     .format--flip inversa două dintre ele doar peste 721px — adică nu pe telefon,
+     unde chiar conta. Coborât și aici. */
+  .format--flip { grid-template-columns: minmax(0, 1fr) minmax(0, 118px); }
+  .format--flip .phone { order: 2; }
+  .format--flip .format__body { text-align: right; justify-items: end; }
 }
